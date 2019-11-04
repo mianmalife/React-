@@ -5,6 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
+const devMode = process.env.NODE_ENV !== 'production'
+
 module.exports = {
     entry: ['./src/index.js'],
     output: {
@@ -24,27 +26,10 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css$/,
+                test: /\.(le|c)ss$/,
                 use: [
                     {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            reloadAll: true,
-                        }
-                    },
-                    { loader: 'css-loader' },
-                    { loader: 'style-loader' },
-                    { loader: 'postcss-loader' }
-                ]
-            },
-            {
-                test: /\.less$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            reloadAll: true,
-                        }
+                        loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     },
                     { loader: 'css-loader' },
                     { loader: 'postcss-loader' },
@@ -74,29 +59,10 @@ module.exports = {
     performance: {
         hints: false
     },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    chunks: 'initial',
-                    minChunks: 2,
-                    maxInitialRequests: 5,
-                    minSize: 0
-                },
-                vendor: { // 将第三方模块提取出来
-                    test: /node_modules/,
-                    chunks: 'initial',
-                    name: 'vendor',
-                    priority: 10, // 优先
-                    enforce: true
-                }
-            }
-        }
-    },
     externals: {
         'react': 'window.React',
         'react-dom': 'window.ReactDOM',
-        'react-router-dom': 'ReactRouterDOM'
+        'react-router-dom': 'window.ReactRouterDOM'
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -104,6 +70,9 @@ module.exports = {
             title: 'test',
             template: './src/index.html'
         }),
-        new ProgressBarPlugin()
+        new ProgressBarPlugin(),
+        new MiniCssExtractPlugin({
+            filename: devMode? '[name].css' : '[name][hash:6].css',
+        })
     ]
 }
