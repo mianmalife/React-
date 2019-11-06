@@ -62,7 +62,7 @@ module.exports = {
     externals: {
         'react': 'window.React',
         'react-dom': 'window.ReactDOM',
-        'react-router-dom': 'window.ReactRouterDOM'
+        'react-router-dom': 'window.ReactRouterDOM',
     },
     plugins: [
         new CleanWebpackPlugin(),
