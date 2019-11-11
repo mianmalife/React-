@@ -63,6 +63,9 @@ module.exports = {
         'react': 'window.React',
         'react-dom': 'window.ReactDOM',
         'react-router-dom': 'window.ReactRouterDOM',
+        'redux': 'window.Redux',
+        'react-redux': 'window.ReactRedux',
+        'redux-thunk': 'window.ReduxThunk'
     },
     plugins: [
         new CleanWebpackPlugin(),
