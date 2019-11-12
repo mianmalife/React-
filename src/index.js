@@ -7,12 +7,12 @@ import rootReducer from "./reducer/rootReducer";
 import ProductList from "./component/productlist";
 import Counter from "./component/counter";
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route,
     Link
 } from "react-router-dom";
-import { Button, message, Carousel, Card, DatePicker, Input, ConfigProvider } from 'antd';
+import { Button, message, DatePicker, Input, ConfigProvider } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
@@ -42,10 +42,6 @@ export default class App extends React.Component {
             endValue: null,
             endOpen: false,
         }
-    }
-
-    componentDidMount() {
-
     }
 
     disabledStartDate = startValue => {
@@ -87,20 +83,10 @@ export default class App extends React.Component {
     handleEndOpenChange = open => {
         this.setState({ endOpen: open });
     };
-
-    onChangeC = (a, b, c) => {
-        console.log(a, b, c);
-    }
     render() {
         const { fruit, startValue, endValue, endOpen, locale } = this.state;
         return <div>
             Hello React and Webpack4!
-            <ul>
-                {
-                    fruit.map((item, index) => <li key={index}>{item}</li>)
-                }
-            </ul>
-            <p className="text">如果构建时出现大量 browsers 错误，如下错误，browsers 改成 overrideBrowserslist</p>
             <ProductList />
             <Counter />
             <Button type="primary">Primary1</Button>
@@ -141,44 +127,12 @@ export default class App extends React.Component {
                         </ul>
                     </nav>
                     <Switch>
-                        <Route path="/about">
-                            <About />
-                        </Route>
-                        <Route path="/users">
-                            <Users />
-                        </Route>
-                        <Route path="/">
-                            <Home />
-                        </Route>
+                        <Route path="/about" component={About}></Route>
+                        <Route path="/users" component={Users}></Route>
+                        <Route exact path="/" component={Home}></Route>
                     </Switch>
                 </div>
             </Router>
-            <Carousel afterChange={this.onChangeC}>
-                <div>
-                    <h3>1</h3>
-                </div>
-                <div>
-                    <h3>2</h3>
-                </div>
-                <div>
-                    <h3>3</h3>
-                </div>
-                <div>
-                    <h3>4</h3>
-                </div>
-            </Carousel>
-            <div>
-                <Card title="Default size card" extra={<a href="#">More</a>} style={{ width: 300 }}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                </Card>
-                <Card size="small" title="Small size card" extra={<a href="#">More</a>} style={{ width: 300 }}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                </Card>
-            </div>
         </div>
     }
 }
