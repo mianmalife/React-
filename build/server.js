@@ -16,7 +16,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 
-// 使用静态资源目录，才能访问到/dist/idndex.html
+// 使用静态资源目录，才能访问到/dist/index.html
 app.use(express.static(config.output.path))
 
 app.listen(3000, function() {

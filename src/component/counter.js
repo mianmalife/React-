@@ -15,9 +15,10 @@ class Counter extends React.Component {
     this.props.reset();
   };
   render() {
+    console.log(this.props.count)
     return (
       <div className="counter">
-        <h2>Counter</h2>
+        <h2>Counter计数器</h2>
         <div>
           <button onClick={this.decrement}>-</button>
           <span className="count">{this.props.count}</span>
@@ -32,8 +33,9 @@ class Counter extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return {
-    count: state.count
+    count: state.adds.count
   };
 }
 // 在这个对象中, 属性名会成为 prop 的 names,

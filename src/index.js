@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import thunk from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-// import Counter from "./Counter";
+import thunk from "redux-thunk";
 import rootReducer from "./reducer/rootReducer";
 import ProductList from "./component/productlist";
+import Counter from "./component/counter";
 import {
     BrowserRouter as Router,
     Switch,
@@ -45,7 +45,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        
+
     }
 
     disabledStartDate = startValue => {
@@ -101,7 +101,8 @@ export default class App extends React.Component {
                 }
             </ul>
             <p className="text">如果构建时出现大量 browsers 错误，如下错误，browsers 改成 overrideBrowserslist</p>
-            <ProductList></ProductList>
+            <ProductList />
+            <Counter />
             <Button type="primary">Primary1</Button>
             <div>
                 <DatePicker
@@ -183,11 +184,11 @@ export default class App extends React.Component {
 }
 
 ReactDOM.render(
-<ConfigProvider locale={zhCN}>
-<Provider store={store}>
-    <App />
-</Provider>
-</ConfigProvider>, document.getElementById('app'));
+    <ConfigProvider locale={zhCN}>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </ConfigProvider>, document.getElementById('app'));
 
 if (module.hot) {
     module.hot.accept();

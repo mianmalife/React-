@@ -4,8 +4,8 @@
   "description": "a webpack react demo",
   "main": "index.js",
   "scripts": {
-    "server": " cross-env NODE_ENV=development node server.js",
-    "build": "cross-env NODE_ENV=production webpack  --config webpack.prod.js --progress"
+    "server": " cross-env NODE_ENV=development node ./build/server.js",
+    "build": "cross-env NODE_ENV=production webpack  --config ./build/webpack.prod.js"
   },
   "keywords": [
     "webpack",
@@ -60,5 +60,8 @@
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
-  }
+  },
+  "sideEffects": [
+    "*.css"
+  ]
 }

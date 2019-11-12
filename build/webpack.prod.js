@@ -5,6 +5,7 @@ const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plug
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 module.exports = merge(common, {
   mode: 'production',
+  devtool: 'cheap-module-source-map',
   plugins: [
     new optimizeCssAssetsWebpackPlugin({}),
     // new BundleAnalyzerPlugin()

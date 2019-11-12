@@ -6,8 +6,8 @@ export const increment = () => {
   return { type: INCREMENT };
 };
 export const decrement = () => {
-  return { type: "DECREMENT" };
+  return { type: DECREMENT };
 };
 export const reset = () => {
-  return { type: "RESET" };
+  return { type: RESET };
 };
