@@ -1,3 +1,4 @@
+import axios from 'axios';
 export const FETCH_PRODUCTS_BEGIN = "FETCH_PRODUCTS_BEGIN";
 export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 export const FETCH_PRODUCTS_FAILURE = "FETCH_PRODUCTS_FAILURE";
@@ -19,13 +20,11 @@ export const fetchProductsFailure = error => ({
 export const GetProData = () => {
   return dispatch => {
     dispatch(fetchProductsBegin());
-    return fetch(
+    return axios.get(
       'http://yapi.demo.qunar.com/mock/32622/info'
     )
-      .then(res => res.json())
-      .then(json => {
-        dispatch(fetchProductsSuccess(json.data.list));
-        return json.data.list;
+      .then(res => {
+        dispatch(fetchProductsSuccess(res.data.data.list));
       })
       .catch(error => dispatch(fetchProductsFailure(error)));
   };

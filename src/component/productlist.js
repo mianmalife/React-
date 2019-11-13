@@ -13,7 +13,7 @@ class ProductList extends React.Component {
     return (
       <div>
         <ul>
-          <h2>姓名列表</h2>
+          <h2>姓名列表45</h2>
           {products.map(p => (
             <li key={p.id}>{p.shop_name}</li>
           ))}
