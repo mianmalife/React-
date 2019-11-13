@@ -16,14 +16,14 @@
                 "corejs": "2"
             }
         ],
-        [
-            "import",
-            {
-                "libraryName": "antd",
-                "libraryDirectory": "es",
-                "style": true
-            }
-        ],
+        // [
+        //     "import",
+        //     {
+        //         "libraryName": "antd",
+        //         "libraryDirectory": "es",
+        //         "style": true
+        //     }
+        // ],
         "@babel/plugin-proposal-class-properties"
     ]
 }

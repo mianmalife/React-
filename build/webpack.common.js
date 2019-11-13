@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production'
-
+console.log(devMode)
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
@@ -102,7 +102,8 @@ module.exports = {
         'react-router-dom': 'window.ReactRouterDOM',
         'redux': 'window.Redux',
         'react-redux': 'window.ReactRedux',
-        'redux-thunk': 'window.ReduxThunk'
+        'redux-thunk': 'window.ReduxThunk',
+        'antd': 'window.antd'
     },
     plugins: [
         new CleanWebpackPlugin(),
